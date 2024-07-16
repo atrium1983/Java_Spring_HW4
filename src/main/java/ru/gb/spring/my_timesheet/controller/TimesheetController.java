@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.gb.spring.my_timesheet.model.Timesheet;
 import ru.gb.spring.my_timesheet.service.TimesheetService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,9 +71,19 @@ public class TimesheetController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping // получить все
+    @GetMapping() // получить все
     public ResponseEntity<List<Timesheet>> getAll() {
         return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/after")
+    public ResponseEntity<List<Timesheet>> getCreatedAfter(@RequestParam LocalDate createdAtAfter){
+        return ResponseEntity.status(HttpStatus.OK).body(service.getCreatedAfter(createdAtAfter));
+    }
+
+    @GetMapping("/before")
+    public ResponseEntity<List<Timesheet>> getCreatedBefore(@RequestParam LocalDate createdAtBefore){
+        return ResponseEntity.status(HttpStatus.OK).body(service.getCreatedBefore(createdAtBefore));
     }
 
     @PostMapping // создание нового ресурса
@@ -93,5 +104,4 @@ public class TimesheetController {
         // 204 No Content
         return ResponseEntity.noContent().build();
     }
-
 }

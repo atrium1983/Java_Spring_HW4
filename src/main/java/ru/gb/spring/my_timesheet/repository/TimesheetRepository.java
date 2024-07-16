@@ -27,6 +27,14 @@ public class TimesheetRepository {
         return List.copyOf(timesheets); // использовать вместо List.of(), чтобы создавалась копия и не было прямого доступа к исходным данным
     }
 
+    public List<Timesheet> getCreatedAfter(LocalDate date){
+        return timesheets.stream().filter(elem -> (elem.getCreatedAt().compareTo(date.atStartOfDay()) > 0 )).toList();
+    }
+
+    public List<Timesheet> getCreatedBefore(LocalDate date){
+        return timesheets.stream().filter(elem -> (elem.getCreatedAt().compareTo(date.atStartOfDay()) < 0 )).toList();
+    }
+
     public Timesheet create(Timesheet timesheet) {
         timesheet.setId(sequence++);
         timesheet.setCreatedAt(LocalDateTime.now().withNano(0));

@@ -6,6 +6,7 @@ import ru.gb.spring.my_timesheet.model.Timesheet;
 import ru.gb.spring.my_timesheet.repository.ProjectRepository;
 import ru.gb.spring.my_timesheet.repository.TimesheetRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,14 @@ public class TimesheetService {
 
     public List<Timesheet> getAll() {
         return timesheetRepository.getAll();
+    }
+
+    public List<Timesheet> getCreatedAfter(LocalDate date){
+        return timesheetRepository.getCreatedAfter(date);
+    }
+
+    public List<Timesheet> getCreatedBefore(LocalDate date){
+        return timesheetRepository.getCreatedBefore(date);
     }
 
     public Timesheet create(Timesheet timesheet) {
