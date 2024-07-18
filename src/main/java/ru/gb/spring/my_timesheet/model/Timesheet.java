@@ -5,6 +5,10 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Описание структуры json-ответа на REST-запросы.
+ * Т.е. запросы, ответ на которые - JSON.
+ */
 // эта аннотация ломбок позволяет не прописывать геттеры и сеттеры, они идут вместе с ней
 @Data
 public class Timesheet {

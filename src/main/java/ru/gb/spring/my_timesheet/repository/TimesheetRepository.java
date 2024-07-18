@@ -37,7 +37,7 @@ public class TimesheetRepository {
 
     public Timesheet create(Timesheet timesheet) {
         timesheet.setId(sequence++);
-        timesheet.setCreatedAt(LocalDateTime.now().withNano(0));
+//        timesheet.setCreatedAt(LocalDateTime.now().withNano(0));
         timesheets.add(timesheet);
         return timesheet;
     }

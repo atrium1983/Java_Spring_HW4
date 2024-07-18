@@ -1,4 +1,4 @@
-package ru.gb.spring.my_timesheet.controller;
+package ru.gb.spring.my_timesheet.rest;
 
 import org.springframework.web.bind.annotation.*;
 
